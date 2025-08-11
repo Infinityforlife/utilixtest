@@ -4,197 +4,227 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Utilix — Upgrade Your Server</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    :root{
+    :root {
       --bg: #0d0d0f;
       --fg: #f2f2f7;
       --accent: #00c6ff;
       --accent2: #0072ff;
       --muted: #a0a0a7;
-      --panel: #141418;
       --card: #1e1e24;
+      --panel: #141418;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: radial-gradient(circle at top, #1a1a1d, var(--bg));
-      color:var(--fg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      min-height:100vh;
-      line-height:1.45;
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      line-height: 1.45;
     }
 
-    /* Header / Navbar */
-    header{
-      position:fixed;
-      inset:0 0 auto 0;
-      height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:1rem 2rem;
-      gap:1rem;
-      z-index:1100;
+    /* ---------- Header / Navbar ---------- */
+    header {
+      background: transparent;
+      position: fixed;
+      width: 100%;
+      z-index: 1100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(13,13,15,0.28) 0%, rgba(13,13,15,0.12) 100%);
-      border-bottom: 1px solid rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+      height: 72px;
+      top: 0;
+      left: 0;
     }
-    .logo{
-      font-weight:800;
-      font-size:1.25rem;
-      letter-spacing:-0.02em;
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+    nav.header-nav ul {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    nav.header-nav a {
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding: 6px 6px;
+      border-radius: 6px;
+      transition: transform 0.15s ease;
+    }
+    nav.header-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.28s ease;
+    }
+    nav.header-nav a:hover {
+      transform: translateY(-2px);
+    }
+    nav.header-nav a:hover::after {
+      width: 100%;
+    }
+    nav.header-nav a.active {
+      background: linear-gradient(90deg, rgba(0, 198, 255, 0.08), rgba(0, 114, 255, 0.06));
+      -webkit-background-clip: padding-box;
+      box-shadow: 0 6px 20px rgba(0, 114, 255, 0.04);
+    }
+
+    /* Page container */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 96px 20px 56px;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 72vh;
+      padding: 2rem 1rem;
+    }
+    .hero-inner {
+      max-width: 920px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.02;
+      margin-bottom: 0.75rem;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    nav.header-nav ul{
-      display:flex;
-      gap:1.25rem;
-      list-style:none;
-      align-items:center;
-      margin:0;
-      padding:0;
+    .hero p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin-bottom: 1.25rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    nav.header-nav a{
-      color:var(--fg);
-      text-decoration:none;
-      font-weight:600;
-      position:relative;
-      padding:6px 8px;
-      border-radius:6px;
-      transition: all .18s ease;
-    }
-    nav.header-nav a::after{
-      content:'';
-      position:absolute;
-      left:0;
-      bottom:-6px;
-      width:0%;
-      height:2px;
-      background:var(--accent);
-      transition: width .28s ease;
-    }
-    nav.header-nav a:hover{ transform:translateY(-2px); }
-    nav.header-nav a:hover::after{ width:100%; }
-    nav.header-nav a.active{
-      background: linear-gradient(90deg, rgba(0,198,255,0.08), rgba(0,114,255,0.06));
-      box-shadow:0 6px 20px rgba(0,114,255,0.04);
-    }
-
-    /* Mobile menu */
-    .menu-toggle{
-      display:none;
-      background:transparent;
-      border:0;
-      color:var(--fg);
-      font-size:1.35rem;
-      cursor:pointer;
-    }
-    @media (max-width:880px){
-      .menu-toggle{ display:block; }
-      nav.header-nav ul{ display:none; position:absolute; top:72px; right:16px; flex-direction:column; background:linear-gradient(180deg, rgba(13,13,15,0.95), rgba(13,13,15,0.9)); padding:12px; border-radius:10px; width:200px; border:1px solid rgba(255,255,255,0.02);}
-      nav.header-nav ul.show{ display:flex; }
-      nav.header-nav a{ padding:10px 12px; }
-    }
-
-    /* Page container */
-    .page { max-width:1200px; margin:0 auto; padding:96px 20px 56px; }
-
-    /* Hero */
-    .hero{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      min-height:72vh;
-      padding: 2rem 1rem;
-    }
-    .hero-inner{ max-width:920px; }
-    .hero h1{
-      font-size:3.5rem;
-      line-height:1.02;
-      margin-bottom:0.75rem;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .hero p{ color:var(--muted); font-size:1.15rem; margin-bottom:1.25rem; max-width:760px; margin-left:auto; margin-right:auto; }
     .cta {
-      display:inline-block;
-      padding:0.8rem 1.8rem;
-      border-radius:50px;
-      font-weight:700;
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 700;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color:white;
-      text-decoration:none;
-      box-shadow: 0 8px 30px rgba(0,198,255,0.08);
-      transition: transform .18s ease, box-shadow .18s ease;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0, 198, 255, 0.08);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
-    .cta:hover{ transform:translateY(-4px); box-shadow: 0 18px 50px rgba(0,198,255,0.12); }
+    .cta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(0, 198, 255, 0.12);
+    }
 
     /* Feature cards */
-    .features{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap:1.6rem;
-      margin-top:2.25rem;
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+      margin-top: 2.25rem;
     }
-    .feature{
-      background:var(--card);
-      border-radius:14px;
-      padding:1.6rem;
-      text-align:left;
-      transition: transform .18s ease, box-shadow .18s ease;
-      border:1px solid rgba(255,255,255,0.02);
+    .feature {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 1.6rem;
+      text-align: left;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      border: 1px solid rgba(255, 255, 255, 0.02);
     }
-    .feature:hover{ transform:translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
-    .feature span{ display:inline-block; font-size:1.8rem; margin-bottom:10px; }
-    .feature h3{ margin:0 0 8px 0; font-size:1.15rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .feature p{ color:var(--muted); font-size:0.96rem; margin:0; }
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    }
+    .feature span {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .feature h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.15rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .feature p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin: 0;
+    }
 
     /* Accent divider */
-    .divider{
-      height:2px;
-      margin:2.6rem 0;
-      background: linear-gradient(90deg, rgba(0,198,255,0.12), rgba(0,114,255,0.06));
-      border-radius:4px;
-      border:1px solid rgba(255,255,255,0.02);
+    .divider {
+      height: 2px;
+      margin: 2.6rem 0;
+      background: linear-gradient(90deg, rgba(0, 198, 255, 0.12), rgba(0, 114, 255, 0.06));
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
     }
 
     /* Footer */
-    footer{
-      margin-top:2.5rem;
-      padding:2.2rem 1rem;
-      text-align:center;
-      color:var(--muted);
-      background:transparent;
-      border-top: 1px solid rgba(255,255,255,0.01);
+    footer {
+      margin-top: 2.5rem;
+      padding: 2.2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      background: transparent;
+      border-top: 1px solid rgba(255, 255, 255, 0.01);
     }
-    footer a{ color:var(--accent); text-decoration:none; }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
     /* Small screens tweaks */
-    @media (max-width:640px){
-      .hero h1{ font-size:2.1rem; }
-      .hero p{ font-size:1rem; }
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">Utilix</div>
-
-    <button class="menu-toggle" aria-label="Toggle menu" id="menuBtn">☰</button>
-
-    <nav class="header-nav" aria-label="Primary Navigation">
-      <ul id="navList">
-        <li><a href="#features">Features</a></li>
-        <li><a href="commands.html">Commands</a></li>
-        <li><a href="setup.html">Setup</a></li>
+    <nav class="header-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="setup.html">Setup</a></li>
       </ul>
     </nav>
   </header>
@@ -202,25 +232,42 @@
   <main class="page">
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-inner">
-        <h1 id="hero-heading">Utilix<br><span style="font-size:1.15rem;font-weight:500;color:var(--muted);">Upgrade your server, elevate your community.</span></h1>
-        <p>Utilix is the all-in-one bot for moderation, tickets, utilities, and customization — designed to make your server thrive.</p>
+        <h1 id="hero-heading">
+          Utilix<br />
+          <span style="font-size: 1.15rem; font-weight: 500; color: var(--muted);"
+            >Upgrade your server, elevate your community.</span
+          >
+        </h1>
+        <p>
+          Utilix is the all-in-one bot for moderation, tickets, utilities, and
+          customization — designed to make your server thrive.
+        </p>
         <a class="cta" href="setup.html">Get Started</a>
 
-        <div class="features" style="margin-top:1.6rem;">
+        <div class="features" style="margin-top: 1.6rem">
           <div class="feature">
             <span>🎫</span>
             <h3>Ticket Commands</h3>
-            <p>Create and manage support tickets with panels, permissions, and quick actions.</p>
+            <p>
+              Create and manage support tickets with panels, permissions, and
+              quick actions.
+            </p>
           </div>
           <div class="feature">
             <span>🛡️</span>
             <h3>Moderation Tools</h3>
-            <p>Kick, ban, mute, and manage users with transparent logs and history tracking.</p>
+            <p>
+              Kick, ban, mute, and manage users with transparent logs and
+              history tracking.
+            </p>
           </div>
           <div class="feature">
             <span>🕵️</span>
             <h3>Scam Database</h3>
-            <p>Community-powered reports and checks to protect your server from scams and malicious links.</p>
+            <p>
+              Community-powered reports and checks to protect your server from
+              scams and malicious links.
+            </p>
           </div>
         </div>
       </div>
@@ -229,52 +276,74 @@
     <div class="divider" aria-hidden="true"></div>
 
     <!-- Optional: a short "Why Utilix" row -->
-    <section style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;">
-      <div class="feature" style="text-align:center;">
-        <h3 style="background:transparent;-webkit-text-fill-color:initial;color:var(--accent);">Fast Setup</h3>
-        <p style="color:var(--muted)">Connect once and configure with a few commands — no complicated UI required.</p>
+    <section
+      style="
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+      "
+    >
+      <div class="feature" style="text-align: center">
+        <h3
+          style="
+            background: transparent;
+            -webkit-text-fill-color: initial;
+            color: var(--accent);
+          "
+        >
+          Fast Setup
+        </h3>
+        <p style="color: var(--muted)">
+          Connect once and configure with a few commands — no complicated UI
+          required.
+        </p>
       </div>
-      <div class="feature" style="text-align:center;">
-        <h3 style="background:transparent;-webkit-text-fill-color:initial;color:var(--accent);">Secure</h3>
-        <p style="color:var(--muted)">Permission-aware features and clear logs to keep moderation safe and fair.</p>
+      <div class="feature" style="text-align: center">
+        <h3
+          style="
+            background: transparent;
+            -webkit-text-fill-color: initial;
+            color: var(--accent);
+          "
+        >
+          Secure
+        </h3>
+        <p style="color: var(--muted)">
+          Permission-aware features and clear logs to keep moderation safe and
+          fair.
+        </p>
       </div>
-      <div class="feature" style="text-align:center;">
-        <h3 style="background:transparent;-webkit-text-fill-color:initial;color:var(--accent);">Always Improving</h3>
-        <p style="color:var(--muted)">Active development and prompt support — new features land regularly.</p>
+      <div class="feature" style="text-align: center">
+        <h3
+          style="
+            background: transparent;
+            -webkit-text-fill-color: initial;
+            color: var(--accent);
+          "
+        >
+          Always Improving
+        </h3>
+        <p style="color: var(--muted)">
+          Active development and prompt support — new features land regularly.
+        </p>
       </div>
     </section>
 
     <footer>
-      <p>&copy; 2025 Utilix Bot — <a href="/utilix/tos">Terms</a> • <a href="/utilix/privacy">Privacy</a></p>
+      <p>
+        &copy; 2025 Utilix Bot — <a href="/utilix/tos">Terms</a> •
+        <a href="/utilix/privacy">Privacy</a>
+      </p>
     </footer>
   </main>
 
-  <script>
-    // Mobile nav toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const navList = document.getElementById('navList');
-    menuBtn && menuBtn.addEventListener('click', () => navList.classList.toggle('show'));
-
-    // Close mobile nav when clicking outside (optional nicety)
-    document.addEventListener('click', (e) => {
-      if (!navList || !menuBtn) return;
-      if (window.innerWidth > 880) return;
-      const target = e.target;
-      if (!navList.contains(target) && !menuBtn.contains(target)) navList.classList.remove('show');
-    });
-
-    // Optional: keyboard shortcut focus ("/") for the CTA (not search) - stay minimal per request
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        // ctrl/cmd+K opens setup quickly
-        window.location.href = 'setup.html';
-      }
-    });
-  </script>
-  <script>
+ <script>
   if (window.innerWidth < 880) {
-    window.location.href = '/unsupported.html';
+    window.location.href = "/unsupported.html";
   }
 </script>
+
 </body>
 </html>
