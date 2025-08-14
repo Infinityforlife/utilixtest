@@ -146,6 +146,35 @@
       box-shadow: 0 18px 50px rgba(0, 198, 255, 0.12);
     }
 
+    /* Outline Button Animation */
+    .outline-btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      background: transparent;
+      color: white;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .outline-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      border: 2px solid var(--accent);
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+    .outline-btn:hover::before {
+      transform: scale(1);
+    }
+    .outline-btn:hover {
+      color: var(--accent);
+    }
+
     /* Feature cards */
     .features {
       display: grid;
@@ -222,9 +251,9 @@
     <div class="logo">Utilix</div>
     <nav class="header-nav" aria-label="Primary navigation">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="setup.html">Setup</a></li>
+        <li><a href="/index" class="active">Home</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/setup">Setup</a></li>
       </ul>
     </nav>
   </header>
@@ -234,15 +263,21 @@
       <div class="hero-inner">
         <h1 id="hero-heading">
           Utilix<br />
-          <span style="font-size: 1.15rem; font-weight: 500; color: var(--muted);"
-            >Upgrade your server, elevate your community.</span
-          >
+          <span style="font-size: 1.15rem; font-weight: 500; color: var(--muted);">
+            Upgrade your server, elevate your community.
+          </span>
         </h1>
         <p>
           Utilix is the all-in-one bot for moderation, tickets, utilities, and
           customization — designed to make your server thrive.
         </p>
-        <a class="cta" href="setup.html">Get Started</a>
+        
+        <!-- Updated Buttons -->
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.25rem;">
+          <a class="cta" href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot">Invite Bot</a>
+          <a class="cta" href="https://discord.gg/YOUR_SUPPORT_SERVER">Join Support Server</a>
+          <!-- <a class="outline-btn" href="#extra">Extra Action</a> -->
+        </div>
 
         <div class="features" style="margin-top: 1.6rem">
           <div class="feature">
@@ -286,13 +321,7 @@
       "
     >
       <div class="feature" style="text-align: center">
-        <h3
-          style="
-            background: transparent;
-            -webkit-text-fill-color: initial;
-            color: var(--accent);
-          "
-        >
+        <h3 style="background: transparent; -webkit-text-fill-color: initial; color: var(--accent);">
           Fast Setup
         </h3>
         <p style="color: var(--muted)">
@@ -301,13 +330,7 @@
         </p>
       </div>
       <div class="feature" style="text-align: center">
-        <h3
-          style="
-            background: transparent;
-            -webkit-text-fill-color: initial;
-            color: var(--accent);
-          "
-        >
+        <h3 style="background: transparent; -webkit-text-fill-color: initial; color: var(--accent);">
           Secure
         </h3>
         <p style="color: var(--muted)">
@@ -316,13 +339,7 @@
         </p>
       </div>
       <div class="feature" style="text-align: center">
-        <h3
-          style="
-            background: transparent;
-            -webkit-text-fill-color: initial;
-            color: var(--accent);
-          "
-        >
+        <h3 style="background: transparent; -webkit-text-fill-color: initial; color: var(--accent);">
           Always Improving
         </h3>
         <p style="color: var(--muted)">
