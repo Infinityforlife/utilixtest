@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Utilix — Terms of Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --fg: #f2f2f7;
+      --accent: #00c6ff;
+      --accent2: #0072ff;
+      --muted: #a0a0a7;
+      --card: #1e1e24;
+      --panel: #141418;
+      --success: #00dba0;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(circle at top, #1a1a1d, var(--bg));
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ---------- Header / Navbar ---------- */
+    header {
+      background: transparent;
+      position: fixed; width: 100%; z-index: 1100;
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+      height: 72px; top: 0; left: 0;
+    }
+    .logo {
+      font-weight: 800; font-size: 1.25rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+    nav.header-nav ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; align-items: center; }
+    nav.header-nav a {
+      color: var(--fg); text-decoration: none; font-weight: 600; position: relative;
+      padding: 6px 10px; border-radius: 6px; transition: transform 0.15s ease;
+    }
+    nav.header-nav a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0%; height: 2px; background: var(--accent); transition: width 0.28s ease; }
+    nav.header-nav a:hover { transform: translateY(-2px); }
+    nav.header-nav a:hover::after { width: 100%; }
+    nav.header-nav a.active {
+      background: linear-gradient(90deg, rgba(0, 198, 255, 0.08), rgba(0, 114, 255, 0.06));
+      -webkit-background-clip: padding-box; box-shadow: 0 6px 20px rgba(0, 114, 255, 0.04);
+    }
+
+    /* Page container */
+    .page { max-width: 1200px; margin: 0 auto; padding: 96px 20px 56px; }
+
+    /* Hero */
+    .hero { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 38vh; padding: 2rem 1rem; }
+    .hero-inner { max-width: 920px; }
+    .hero h1 {
+      font-size: 3rem; line-height: 1.02; margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.25rem; max-width: 760px; margin-inline: auto; }
+
+    /* CTA row */
+    .cta { display: inline-block; padding: 0.8rem 1.4rem; border-radius: 50px; font-weight: 700; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: white; text-decoration: none; box-shadow: 0 8px 30px rgba(0, 198, 255, 0.08); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .cta:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(0, 198, 255, 0.12); }
+    .outline-btn { padding: 0.8rem 1.4rem; border-radius: 50px; font-weight: 700; background: transparent; color: white; border: 2px solid transparent; position: relative; overflow: hidden; text-decoration: none; transition: color 0.3s ease; }
+    .outline-btn::before { content: ""; position: absolute; inset: 0; border-radius: 50px; border: 2px solid var(--accent); transform: scale(0); transition: transform 0.3s ease; }
+    .outline-btn:hover::before { transform: scale(1); }
+    .outline-btn:hover { color: var(--accent); }
+
+    /* Layout: TOC + Content */
+    .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; }
+    .toc { position: sticky; top: 96px; background: var(--panel); border: 1px solid rgba(255,255,255,0.04); border-radius: 14px; padding: 1rem; }
+    .toc h2 { margin: 0 0 8px; font-size: 0.95rem; letter-spacing: 0.02em; color: var(--muted); }
+    .toc a { display: block; text-decoration: none; color: var(--fg); padding: 8px 10px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; }
+    .toc a:hover { background: rgba(255,255,255,0.04); }
+
+    /* Terms content */
+    .terms-card { background: var(--card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.04); padding: 1.2rem; }
+    .section { padding: 1rem; border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); }
+    .section + .section { margin-top: 14px; }
+    .section h3 { margin: 0 0 6px; font-size: 1.05rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .section p, .section li { color: var(--muted); font-size: 0.98rem; }
+    .section ul { margin: 0.25rem 0 0.75rem 1.1rem; }
+
+    .meta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin-top: 10px; }
+    .badge { font-size: 0.8rem; font-weight: 700; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); }
+
+    .divider { height: 2px; margin: 2.2rem 0; background: linear-gradient(90deg, rgba(0, 198, 255, 0.12), rgba(0, 114, 255, 0.06)); border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.02); }
+
+    .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+
+    footer { margin-top: 2.5rem; padding: 2.2rem 1rem; text-align: center; color: var(--muted); background: transparent; border-top: 1px solid rgba(255, 255, 255, 0.01); }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .toc { position: relative; top: auto; } }
+    @media (max-width: 640px) { .hero h1 { font-size: 2.1rem; } .hero p { font-size: 1rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Utilix</div>
+    <nav class="header-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/setup">Setup</a></li>
+        <!-- <li><a href="/utilix/tos" class="active">Terms</a></li>-->
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <h1 id="hero-heading">Utilix - Terms of Service</h1>
+        <!-- <p>Element for later.</p> --> 
+        <div class="meta-row" role="list" aria-label="Document metadata">
+          <span class="badge" role="listitem">Effective Date: <strong>July 20, 2025</strong></span>
+          <!-- <span class="badge" role="listitem">Version: <strong>1.0</strong></span>
+          <span class="badge" role="listitem">Jurisdiction: <strong>Global</strong></span>-->
+        </div>
+        <!-- <div class="actions" style="margin-top: 1rem;">
+          <a class="cta" href="https://discord.com/oauth2/authorize?client_id=N?A">Invite Bot</a>
+          <a class="cta" href="https://discord.gg/N/A">Join Support Server</a>-->
+          <!-- <button id="printBtn" class="outline-btn" type="button" aria-label="Print terms">Print</button> -->
+        </div>
+      </div>
+    </section>
+
+    <div class="layout" aria-label="Terms layout">
+      <!-- TOC -->
+      <aside class="toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">On this page</h2>
+        <nav aria-label="Table of contents">
+          <a href="#intro">Introduction</a>
+          <a href="#desc">1. Description</a>
+          <a href="#usage">2. Usage Rules</a>
+          <a href="#scamdb">3. Scammer Database</a>
+          <a href="#tickets">4. Tickets</a>
+          <a href="#termination">5. Termination</a>
+          <a href="#liability">6. Limitation of Liability</a>
+          <a href="#endorsement">7. No Endorsement or Guarantee</a>
+          <a href="#changes">8. Changes to the Terms</a>
+        </nav>
+      </aside>
+
+      <!-- Terms Content -->
+      <section class="terms-card" aria-label="Terms content">
+        <div id="intro" class="section" tabindex="-1">
+          <h3>Introduction</h3>
+          <p>By using Utilix ("the Bot"), you agree to the following terms. If you do not agree, do not invite or use Utilix.</p>
+        </div>
+
+        <div id="desc" class="section" tabindex="-1">
+          <h3>1. Description</h3>
+          <p>Utilix is a Discord bot offering utility features including, but not limited to, a ticket system, scammer reporting database, and other useful moderation or automation tools.</p>
+        </div>
+
+        <div id="usage" class="section" tabindex="-1">
+          <h3>2. Usage Rules</h3>
+          <ul>
+            <li>You must follow Discord's Terms of Service and Community Guidelines.</li>
+            <li>You may not use Utilix to engage in or promote illegal, harmful, or abusive behavior.</li>
+            <li>You must not attempt to exploit, reverse engineer, or overload the Bot.</li>
+          </ul>
+        </div>
+
+        <div id="scamdb" class="section" tabindex="-1">
+          <h3>3. Scammer Database</h3>
+          <ul>
+            <li>The scammer database is community-driven and may contain user-submitted reports.</li>
+            <li>False or malicious reporting may result in blacklisting from the Bot.</li>
+            <li>We are not responsible for any damages or losses arising from reliance on this database.</li>
+          </ul>
+        </div>
+
+        <div id="tickets" class="section" tabindex="-1">
+          <h3>4. Tickets</h3>
+          <ul>
+            <li>Ticket logs may include message content or IDs related to support queries.</li>
+            <li>You are responsible for informing your server members if ticket logs are stored or shared with staff.</li>
+          </ul>
+        </div>
+
+        <div id="termination" class="section" tabindex="-1">
+          <h3>5. Termination</h3>
+          <p>We reserve the right to remove access to Utilix for any user or server, with or without notice, especially in cases of abuse, violation of terms, or at Discord’s request.</p>
+        </div>
+
+        <div id="liability" class="section" tabindex="-1">
+          <h3>6. Limitation of Liability</h3>
+          <ul>
+            <li>Utilix is provided "as is" and "as available" without warranties of any kind.</li>
+            <li>We are not liable for data loss, service interruptions, or inaccuracies.</li>
+            <li>We are not liable for damages or disputes arising from Bot functionality or moderation outcomes.</li>
+            <li>We are not liable for reliance on outputs, reports, or actions made using Utilix.</li>
+          </ul>
+        </div>
+
+        <div id="endorsement" class="section" tabindex="-1">
+          <h3>7. No Endorsement or Guarantee</h3>
+          <p>Utilix does not officially endorse or verify any server, user, or moderator actions taken via the Bot. Presence of a user in the scammer database does not constitute legal judgment.</p>
+        </div>
+
+        <div id="changes" class="section" tabindex="-1">
+          <h3>8. Changes to the Terms</h3>
+          <p>We may revise these Terms at any time. Continued use of the Bot after changes are posted implies acceptance of the updated Terms.</p>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="actions" style="justify-content: flex-end;">
+          <a class="outline-btn" href="#hero-heading" aria-label="Back to top">Back to top ↑</a>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Utilix Bot — <a href="/utilix/tos" aria-current="page">Terms</a> • <a href="/utilix/privacy">Privacy</a></p>
+    </footer>
+  </main>
+
+  <script>
+    // 
+    if (window.innerWidth < 880) {
+      window.location.href = "/unsupported.html";
+    }
+
+    // Print button
+    document.getElementById('printBtn')?.addEventListener('click', () => window.print());
+
+    // Highlight TOC link on scroll
+    const sections = Array.from(document.querySelectorAll('.terms-card .section'));
+    const links = Array.from(document.querySelectorAll('.toc a'));
+    const byId = id => links.find(a => a.getAttribute('href') === '#' + id);
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          links.forEach(a => a.classList.remove('active'));
+          byId(e.target.id)?.classList.add('active');
+        }
+      })
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+
+    sections.forEach(s => obs.observe(s));
+  </script>
+</body>
+</html>
