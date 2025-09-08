@@ -22,7 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* ===== Navbar (exact style you requested) ===== */
     header {
       background: transparent;
       position: fixed;
@@ -77,17 +76,16 @@
       box-shadow: 0 6px 20px rgba(0,114,255,0.04);
     }
 
-    /* ===== Main / Form ===== */
     main {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 6rem 1rem 2rem; /* space for fixed header preserved */
+      padding: 6rem 1rem 2rem; 
       text-align: center;
       min-height: 100vh;
       position: relative;
-      z-index: 10; /* above starfield */
+      z-index: 10; 
     }
     h1 {
       font-size: 2.5rem;
@@ -140,13 +138,13 @@
     button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,198,255,0.4); }
     #message { margin-top: 1rem; font-weight: 600; text-align: center; }
 
-    /* ===== Starfield canvas behind everything ===== */
+
     #starfield {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      z-index: 1;              /* behind header/main, above background */
-      pointer-events: none;    /* clicks pass through */
+      z-index: 1;              
+      pointer-events: none;    
       background: transparent;
       filter: drop-shadow(0 0 2px rgba(0,198,255,0.3));
     }
@@ -157,7 +155,7 @@
   </style>
 </head>
 <body>
-  <!-- ✅ Navbar exactly as requested -->
+
   <header>
     <div class="logo">Utilix</div>
     <nav class="header-nav" aria-label="Primary navigation">
@@ -193,11 +191,11 @@
     </form>
   </main>
 
-  <!-- ⭐ Starfield canvas -->
+
   <canvas id="starfield" aria-hidden="true"></canvas>
 
   <script>
-    /* ========= Starfield (warp effect) ========= */
+
     (function () {
       const canvas = document.getElementById('starfield');
       const ctx = canvas.getContext('2d');
@@ -218,11 +216,11 @@
         stars = [];
         for (let i = 0; i < STAR_COUNT; i++) {
           stars.push({
-            // start spread around the center
+            
             x: (Math.random() * 2 - 1) * width,
             y: (Math.random() * 2 - 1) * height,
             z: Math.random() * width,
-            o: Math.random() * 0.5 + 0.5 // base opacity
+            o: Math.random() * 0.5 + 0.5 
           });
         }
       }
@@ -234,14 +232,14 @@
           const s = stars[i];
           s.z -= SPEED;
           if (s.z <= 1) {
-            // reset star to far plane
+            
             s.x = (Math.random() * 2 - 1) * width;
             s.y = (Math.random() * 2 - 1) * height;
             s.z = width;
             s.o = Math.random() * 0.5 + 0.5;
           }
 
-          const k = 128 / s.z; // perspective
+          const k = 128 / s.z; 
           const x = s.x * k + cx;
           const y = s.y * k + cy;
 
@@ -261,7 +259,7 @@
       tick();
     })();
 
-    /* ========= Appeal Form Submission (unchanged) ========= */
+   
     const form = document.getElementById('appealForm');
     const message = document.getElementById('message');
 
