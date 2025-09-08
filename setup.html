@@ -82,7 +82,7 @@
       box-shadow: 0 6px 20px rgba(0,114,255,0.04);
     }
 
-    /* ---------- Layout ---------- */
+  
     .page {
       max-width:1200px;
       margin: 0 auto;
@@ -101,7 +101,7 @@
       .mobile-nav { display:block; }
     }
 
-    /* ---------- Sidebar ---------- */
+
     .sidebar {
       position: sticky;
       top: 88px;
@@ -134,7 +134,7 @@
       box-shadow: 0 6px 20px rgba(0,114,255,0.04);
     }
 
-    /* Mobile dropdown */
+ 
     .mobile-nav { display:none; margin-bottom:16px; }
     .mobile-nav select {
       width:100%;
@@ -146,7 +146,7 @@
       font-weight:600;
     }
 
-    /* ---------- Main / Search ---------- */
+
     .main { min-width:0; }
     .search-wrap { margin-bottom:18px; display:flex; gap:12px; align-items:center; }
     .search {
@@ -184,7 +184,7 @@
       margin-bottom:12px;
     }
 
-    /* ---------- Command cards ---------- */
+
     .cards {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -210,7 +210,6 @@
   </style>
 </head>
 <body>
-  <!-- Header / Navbar (matches homepage exactly) -->
   <header>
     <div class="logo">Utilix</div>
     <nav class="header-nav" aria-label="Primary navigation">
@@ -225,7 +224,7 @@
 
   <div class="page" id="commands">
     <div class="layout" role="main">
-      <!-- Sidebar (desktop) -->
+
       <aside class="sidebar" aria-label="Commands navigation">
         <h4>Jump to</h4>
         <nav>
@@ -238,9 +237,9 @@
         </nav>
       </aside>
 
-      <!-- Main content (includes mobile dropdown nav + search + full command list) -->
+
       <div class="main">
-        <!-- Mobile dropdown nav -->
+
         <div class="mobile-nav" aria-hidden="true">
           <select id="mobileNavSelect" aria-label="Jump to section">
             <option value="moderation">🛡️ Moderation</option>
@@ -263,7 +262,7 @@
           </div>
         </div>
 
-        <!-- ---------- SECTIONS (ordered by commonly used) ---------- -->
+
 
         <!-- MODERATION -->
         <section id="moderation" class="command-section" aria-labelledby="moderation-title">
@@ -351,22 +350,20 @@
           </div>
         </section>
 
-       <!-- <footer>
-          &copy; 2025 Utilix Bot • <a href="/utilix/tos" style="color:var(--accent)">Terms</a> • <a href="/utilix/privacy" style="color:var(--accent)">Privacy</a>
-        </footer> -->
+       
       </div>
     </div>
   </div>
 
   <script>
-    // Elements
+
     const searchInput = document.getElementById('searchInput');
     const cards = Array.from(document.querySelectorAll('.command-card'));
     const sections = Array.from(document.querySelectorAll('.command-section'));
     const sidebarLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
     const mobileSelect = document.getElementById('mobileNavSelect');
 
-    // Live search: filter cards and hide empty sections
+
     function runSearch() {
       const q = (searchInput.value || '').trim().toLowerCase();
       cards.forEach(card => {
@@ -382,7 +379,7 @@
     }
     searchInput.addEventListener('input', runSearch);
 
-    // Focus search on "/" key
+   
     window.addEventListener('keydown', (e) => {
       if (e.key === '/' && document.activeElement !== searchInput) {
         const tag = document.activeElement.tagName.toLowerCase();
@@ -393,7 +390,7 @@
       }
     });
 
-    // Sidebar: click -> set active and smooth scroll
+
     sidebarLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         // set active state
@@ -402,7 +399,7 @@
       });
     });
 
-    // Mobile select jump
+
     if (mobileSelect) {
       mobileSelect.addEventListener('change', () => {
         const id = mobileSelect.value;
