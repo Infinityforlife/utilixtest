@@ -33,7 +33,6 @@
       position: relative;
     }
 
-    /* ---------- Header / Navbar ---------- */
     header {
       background: transparent;
       position: fixed;
@@ -92,7 +91,6 @@
       box-shadow: 0 6px 20px rgba(0,114,255,0.04);
     }
 
-    /* ---------- Main Content ---------- */
     main {
       flex-grow: 1;
       display: flex;
@@ -101,7 +99,7 @@
       align-items: center;
       text-align: center;
       padding: 0 1rem;
-      margin-top: 72px; /* space for header */
+      margin-top: 72px; 
       position: relative;
       z-index: 10;
       user-select: none;
@@ -148,7 +146,6 @@
       box-shadow: 0 18px 60px rgba(0,198,255,0.45);
     }
 
-    /* ---------- Canvas ---------- */
     #starfield {
       position: fixed;
       top: 0; left: 0;
@@ -188,15 +185,15 @@
 
     const maxDepth = 1200;
 
-    // Star params
+
     const starCounts = { small: 300, medium: 200, large: 70 };
     const stars = [];
 
-    // Cosmic dust particles (fainter)
+
     const dustCount = 100;
     let dusts = [];
 
-    // Shooting stars
+   
     const shootingStarCount = 8;
     let shootingStars = [];
 
@@ -396,20 +393,18 @@
 
       ctx.clearRect(0, 0, width, height);
 
-      // Draw cosmic dust
       dusts.forEach(d => {
         d.hue = (baseHue + 40) % 360;
         d.update();
         d.draw();
       });
 
-      // Draw stars zooming towards viewer
       stars.forEach(star => {
         star.update();
         star.draw();
       });
 
-      // Draw shooting stars on top
+
       shootingStars.forEach(s => {
         s.update(deltaTime);
         s.draw();
