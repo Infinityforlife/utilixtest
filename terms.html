@@ -155,7 +155,7 @@
         </nav>
       </aside>
 
-      <!-- Terms Content -->
+
       <section class="terms-card" aria-label="Terms content">
         <div id="intro" class="section" tabindex="-1">
           <h3>Introduction</h3>
@@ -273,11 +273,11 @@
     </div>
   </main>
 
-  <!-- Floating back-to-top button -->
+
   <button id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
-    // Active TOC highlighting
+
     const sections = Array.from(document.querySelectorAll('.terms-card .section'));
     const links = Array.from(document.querySelectorAll('.toc a'));
     const byId = id => links.find(a => a.getAttribute('href') === '#' + id);
@@ -293,7 +293,7 @@
 
     sections.forEach(s => obs.observe(s));
 
-    // Back to top button logic
+
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) {
