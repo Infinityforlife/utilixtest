@@ -238,7 +238,7 @@
   const sidebarLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
   const mobileSelect = document.getElementById('mobileNavSelect');
 
-  // --- SEARCH ---
+
   function runSearch() {
     const q = (searchInput.value || '').trim().toLowerCase();
     cards.forEach(card => {
@@ -319,7 +319,7 @@
 <footer class="utilix-footer" role="contentinfo">
   <a class="brand" href="/" aria-label="Utilix home">
     <img src="/logo.svg" alt="" onerror="this.style.display='none'">
-    <span class="brand-text">Utilix</span>
+    <!--<span class="brand-text">Utilix</span>-->
   </a>
 
   <div class="center">
